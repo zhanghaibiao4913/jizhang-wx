@@ -1,0 +1,148 @@
+.my-page{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #ffffff;
+	padding-top: 10px;
+	box-sizing: border-box;
+	.user-info-wrapper{
+		display: flex;
+		// align-items: center;
+		// justify-content: center;
+		box-sizing: border-box;
+		padding: 0 10px;
+		.avatar{
+			height: 80px;
+			width: 80px;
+			text-align: center;
+			img{
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+		}
+		.user-info {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			padding-left: 10px;
+			.nickName{
+				color: #333030;
+				font-size: 20px;
+				position: relative;
+				top: 10px;
+			}
+			.user-id{
+				color: #312828;
+				font-size: 14px;
+				position: relative;
+				top: 20px;
+			}
+		}
+	}
+	.list-wrapper{
+		display: flex;
+		flex-direction: column;
+		margin-top: 20px;
+		.item{
+			height: 40px;
+			background-color: #0a6da1;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			box-sizing: border-box;
+			padding: 0 10px;
+			margin-bottom: 20px;
+			span{
+				color: #fff;
+				&.icon{
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					background: url("../../../static/images/enter.png") no-repeat center center / 100%;
+				}
+			}
+		}
+	}
+	.login-btn{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		background-color: rgba(0,0,0,0.6);
+		display: flex;
+		align-items: center;
+		button{
+			width: 140px;
+			height: 60px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.message-wrapper{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		.mask{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.6);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.content{
+				width: 300px;
+				height: 220px;
+				background-color: rgb(5, 48, 49);
+				display: flex;
+				flex-direction: column;
+				padding: 10px;
+				box-sizing: border-box;
+				border-radius: 10px;
+				.message-input{
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					span{
+						color: #ffffff;
+					}
+					textarea{
+						flex: 1;
+						width: 80%;
+						border: solid #0a6da1 1px; 
+						border-radius: 4px;
+						padding-left: 10px;
+						box-sizing: border-box;
+						color: #ffffff;
+						margin-top: 15px;
+					}
+				}
+				.btns{
+					flex: 0 0 50px;
+					display: flex;
+					justify-content: space-around;
+					margin-top: 20px;
+					.btn{
+						width: 120px;
+						height: 45px;
+						line-height: 40px;
+						text-align: center;
+						border-radius: 4px;
+						color: #ffffff;
+						&.confirm{
+							background-color: #1AAD16;
+						}
+						&.cancel{
+							background-color: rgb(71, 73, 70);
+						}
+					}
+				}
+			}
+		}
+	}
+}

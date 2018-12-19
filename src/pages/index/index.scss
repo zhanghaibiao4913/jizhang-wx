@@ -1,0 +1,96 @@
+.index-page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .tab-wrapper{
+    width: 100%;
+    height: 60px;
+    background-color: #1296db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .tab-content{
+      display: flex;
+      width: 300px;
+      height: 60%;
+      border: 1px solid rgb(36, 35, 35);
+      border-radius: 5%;
+      .tab-item{
+        color: #fff;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.active{
+          background-color: #282c34;
+        }
+      }
+    }
+  }
+  .content-wrapper{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333131;
+    .item-wrapper{
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      // background-color: #51b8f0;
+      border-bottom: solid 1px rgb(170, 164, 164);
+      padding: 0 10px;
+      box-sizing: border-box;
+      .icon{
+        width: 24px;
+        height: 32px;
+        margin-right: 10px;
+        &.money{
+          background: url("../../../static/images/money.png") no-repeat center center / 100%;
+        }
+        &.category{
+          background: url("../../../static/images/category.png") no-repeat center center / 100%;
+        }
+        &.date{
+          background: url("../../../static/images/date.png") no-repeat center center / 100%;
+        }
+        &.remarks{
+          background: url("../../../static/images/remarks.png") no-repeat center center / 100%;
+        }
+        &.arrow{
+          width: 24px;
+          height: 24px;
+          margin-right: 0;
+          background: url("../../../static/images/enter.png") no-repeat center center / 100%;
+        }
+      }
+      .title{
+        color: #fff;
+      }
+      .current-category{
+        flex: 1;
+      }
+      .date-pick-wrapper{
+        flex: 1;
+        picker{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+    }
+    .save-btn{
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: #1296db;
+      color: #fff;
+      margin: 0 auto;
+      border-radius: 5%;
+      margin-top: 30px;
+    }
+  }
+}

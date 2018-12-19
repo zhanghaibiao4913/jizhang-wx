@@ -1,0 +1,131 @@
+.detail-page{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	.header-bar{
+		display: flex;
+		flex: 0 0 70px;
+		width: 100%;
+		background-color: #b7c2c2;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 10px;
+		box-sizing: border-box;
+		.date-picker-wrapper{
+			width: 140px;
+			height: 50px;
+			border-radius: 5px;
+			background-color: #0a6da1;
+			color: #fff;
+			picker{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.icon{
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				position: relative;
+				top: 2px;
+				right: -2px;
+				background: url("../../../static/images/triangle.png") no-repeat center center / 100%;
+			}
+		}
+		.category-btns{
+			width: 160px;
+			display: flex;
+			// align-items: center;
+			justify-content: space-between;
+			.btn{
+				width: 45%;
+				height: 30px;
+				line-height: 30px;
+				// flex: 1;
+				text-align: center;
+				// background-color: #201e20;
+				border: 1px solid #201e20;
+				border-radius: 4px;
+				&.active{
+					background-color: #0a6da1;
+					color: #fff;
+					border: none;
+				}
+			}
+		}
+	}
+	.list-wrapper{
+		flex: 1;
+		overflow-y: scroll;
+		.item-day{
+			.day-bar{
+				height: 30px;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: #0ddb8c;
+				padding: 0 10px;
+				box-sizing: border-box;
+				font-size: 12px;
+			}
+			.item-list{
+				width: 100%;
+				box-sizing: border-box;
+				// padding-left: 20px;
+				.item{
+					height: 40px;
+					display: flex;
+					align-items: center;
+					padding: 0 10px;
+					border-bottom: solid 1px #201e20;
+					box-sizing: border-box;
+					font-size: 16px;
+					&:last-child{
+						border-bottom: none;
+					}
+					.category{
+						display: flex;
+						flex: 0 0 80px;
+						height: 30px;
+						align-items: center;
+						justify-content: center;
+						background-color: #df0e0e;
+						border-radius: 4px;
+						color: #fff;
+					}
+					.remark{
+						flex: 1;
+						padding-left: 5px;
+					}
+					.rmb{
+						flex: 0 0 60px;
+						text-align: right;
+					}
+				}
+			}
+		}
+		.null-tips{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.footer-bar{
+		width: 100%;
+		flex: 0 0 40px;
+		background-color: #b7c2c2;
+		line-height: 40px;
+		text-align: center;
+		.red{
+			color: #df0e0e;
+		}
+		.green{
+			color: #0a6da1;
+		}
+	}
+}

@@ -1,0 +1,96 @@
+.chart-page{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	.operation-box{
+		display: flex;
+		flex: 0 0 70px;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 10px;
+		box-sizing: border-box;
+		background-color: #0a6da1;
+		.date-picker-wrapper{
+			width: 128px;
+			height: 50px;
+			border-radius: 5px;
+			background-color: #171818;
+			color: #fff;
+			font-size: 18px;
+			picker{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.icon{
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				position: relative;
+				top: 2px;
+				right: -2px;
+				background: url("../../../static/images/triangle.png") no-repeat center center / 100%;
+			}
+		}
+		.budget-type-btn{
+			margin: 10px auto;
+			box-sizing: border-box;
+			display: flex;
+			span{
+				height: 36px;
+				text-align: center;
+				box-sizing: border-box;
+				color: #9da4a5;
+				margin-right: 20px;
+				font-size: 20px;
+				&.active{
+					border-bottom: 4px solid #df0e0e;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.chart-wrapper{
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		background-color: #0c4969;
+		.charts{
+			flex: 1;
+			position: relative;
+			.chart-wrapper{
+				width: 100%;
+				height: 100%;
+			}
+			.chart-null{
+				position: absolute;
+				left:0px;
+				right: 0px;
+				top:0px;
+				bottom: 0px;
+				width: 200px;
+				height: 100px;
+				margin:auto;
+				text-align: center;
+				color: #ffffff;
+			}
+		}
+		
+	}
+	.footer-bar{
+		width: 100%;
+		flex: 0 0 40px;
+		background-color: #b7c2c2;
+		line-height: 40px;
+		text-align: center;
+		.red{
+			color: #df0e0e;
+		}
+		.green{
+			color: #0a6da1;
+		}
+	}
+}

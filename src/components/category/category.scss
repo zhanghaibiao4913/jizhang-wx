@@ -1,0 +1,67 @@
+.category-page{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	.mask{
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.6);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.content{
+			display: flex;
+			flex-direction: column;
+			width: 80%;
+			height: 70%;
+			background-color: #2f7a46;
+			padding: 20px;
+			box-sizing: border-box;
+			.list-wrapper{
+				display: flex;
+				flex-wrap: wrap;
+				flex: 1;
+				overflow-y: scroll;
+				.item{
+					height: 30px;
+					padding: 3px 14px;
+					border: #2e3031 solid 1px;
+					border-radius: 4px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-right: 10px;
+					margin-bottom: 14px;
+					&.active{
+						color: #ffffff;
+						background-color: #1296db;
+						border: #1296db solid 1px;
+					}
+				}
+			}
+			.btns-wrapper{
+				display: flex;
+				flex: 0 0 45px;
+				justify-content: space-between;
+				.btn{
+					flex: 0 0 45%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border-radius: 4px;
+					&.cancel-btn{
+						background-color: #1AAD16;
+						color: #ffffff;
+					}
+					&.confirm-btn{
+						background-color: #1296db;
+						color: #ffffff;
+					}
+				}
+			}
+		}
+	}
+}
