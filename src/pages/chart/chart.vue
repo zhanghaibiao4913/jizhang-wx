@@ -1,17 +1,5 @@
 <template>
   <div class="chart-page">
-    <!-- <div class="header-bar">
-      <div class="date-picker-wrapper">
-        <picker
-            mode="date"
-            value="currentMonth"
-            fields="month"
-            @change="pickDate">
-          <span>{{currentMonth + '月'}}</span>
-          <span class="icon"></span>
-        </picker>
-      </div>
-    </div> -->
     <div class="chart-wrapper">
       <div class="charts">
         <div class="chart-wrapper">
@@ -202,7 +190,7 @@ export default {
 
   created() {
   },
-  mounted() {
+  onShow() {
     console.log('chart mounted')
     setTimeout(() => {
       this.getDataList();

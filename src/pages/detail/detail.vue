@@ -52,8 +52,8 @@ export default {
   created() {
     // console.log('detail created')
   },
-  onLoad() {
-    console.log('detail onLoad')
+  onShow() {
+    console.log('detail onShow');
     this.loadData();
   },
 

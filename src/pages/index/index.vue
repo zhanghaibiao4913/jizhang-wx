@@ -10,7 +10,7 @@
       <div class="item-wrapper">
         <div class="icon money"></div>
         <div class="title">金额：</div>
-        <div class="input-wrapper"><input type="text" placeholder="输入金额" v-model="rmb"></div>
+        <div class="input-wrapper"><input type="number" placeholder="输入金额" v-model="rmb"></div>
       </div>
       <div class="item-wrapper" @click="openCategory">
         <div class="icon category"></div>
@@ -33,7 +33,9 @@
       <div class="item-wrapper remarks">
         <div class="icon remarks"></div>
         <div class="title">备注：</div>
-        <div class="remarks-text"><input type="text" placeholder="备注说明" v-model="remark"></div>
+        <div class="remarks-text">
+          <input type="text" maxlength="10" placeholder="10个字以内" v-model="remark">
+        </div>
       </div>
       <div class="save-btn" @click="save()">保存</div>
     </div>

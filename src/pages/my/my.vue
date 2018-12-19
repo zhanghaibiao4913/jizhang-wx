@@ -21,12 +21,20 @@
         <div class="content">
           <div class="message-input">
             <span>留言反馈</span>
-            <textarea placeholder="内容" v-model="message"/>
+            <textarea placeholder="30个字以内" maxlength="30" v-model="message"/>
           </div>
           <div class="btns">
             <div class="btn cancel" @click="closeMessage">取消</div>
             <div class="btn confirm" @click="sendMessage">提交</div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-me" v-if="openAbout">
+      <div class="mask" @click="openAbout = false">
+        <div class="about-content" @click.stop="">
+          <span class="author">created by zhb</span>
+          <span class="email">email: zhb_hym@qq.com</span>
         </div>
       </div>
     </div>
@@ -45,11 +53,12 @@ export default {
       domList: [
         {id: 1, name: '留言反馈'},
         {id: 2, name: '系统消息'},
-        {id: 3, name: '土豪专属'}
+        {id: 3, name: '关于作者'}
       ],
       isAuthUserInfo: true, // 默认已授权用户信息
       openMessage: false, // 留言弹窗
       message: '',
+      openAbout: true,
     }
   },
 
@@ -76,6 +85,7 @@ export default {
         let url = '../reply/main';
         wx.navigateTo({ url });
       } else if (data.id == 3) {
+        this.openAbout = true;
       }
     },
     closeMessage() {
@@ -100,7 +110,7 @@ export default {
 
   computed: {
     getID() {
-      return util.getRandomLetter(6) + this.uid;
+      return util.getRandomLetter(9) + this.uid;
     }
   },
 

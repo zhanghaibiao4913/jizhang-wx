@@ -37,15 +37,12 @@
 		.category-btns{
 			width: 160px;
 			display: flex;
-			// align-items: center;
 			justify-content: space-between;
 			.btn{
 				width: 45%;
 				height: 30px;
 				line-height: 30px;
-				// flex: 1;
 				text-align: center;
-				// background-color: #201e20;
 				border: 1px solid #201e20;
 				border-radius: 4px;
 				&.active{
@@ -59,6 +56,7 @@
 	.list-wrapper{
 		flex: 1;
 		overflow-y: scroll;
+		background-color: #333131;
 		.item-day{
 			.day-bar{
 				height: 30px;
@@ -66,7 +64,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				background-color: #0ddb8c;
+				background-color: #0a6da1;
 				padding: 0 10px;
 				box-sizing: border-box;
 				font-size: 12px;
@@ -74,7 +72,6 @@
 			.item-list{
 				width: 100%;
 				box-sizing: border-box;
-				// padding-left: 20px;
 				.item{
 					height: 40px;
 					display: flex;
@@ -92,7 +89,7 @@
 						height: 30px;
 						align-items: center;
 						justify-content: center;
-						background-color: #df0e0e;
+						background-color: #14a33f;
 						border-radius: 4px;
 						color: #fff;
 					}

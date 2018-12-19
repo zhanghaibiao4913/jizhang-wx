@@ -15,7 +15,7 @@
       width: 300px;
       height: 60%;
       border: 1px solid rgb(36, 35, 35);
-      border-radius: 5%;
+      border-radius: 4px;
       .tab-item{
         color: #fff;
         flex: 1;
@@ -43,6 +43,7 @@
       border-bottom: solid 1px rgb(170, 164, 164);
       padding: 0 10px;
       box-sizing: border-box;
+      color: #ffffff;
       .icon{
         width: 24px;
         height: 32px;
