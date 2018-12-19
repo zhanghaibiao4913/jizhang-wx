@@ -58,7 +58,7 @@ export default {
       isAuthUserInfo: true, // 默认已授权用户信息
       openMessage: false, // 留言弹窗
       message: '',
-      openAbout: true,
+      openAbout: false,
     }
   },
 
