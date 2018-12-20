@@ -34,6 +34,7 @@
     flex-direction: column;
     width: 100%;
     background-color: #333131;
+    position: relative;
     .item-wrapper{
       width: 100%;
       height: 60px;
@@ -83,15 +84,26 @@
 
     }
     .save-btn{
-      width: 180px;
+      width: 160px;
       height: 40px;
       line-height: 40px;
       text-align: center;
       background-color: #1296db;
       color: #fff;
       margin: 0 auto;
-      border-radius: 5%;
+      border-radius: 4px;
       margin-top: 30px;
+    }
+    .share-btn{
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      width: 140px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto;
+      font-size: 20px;
     }
   }
 }

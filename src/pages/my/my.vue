@@ -104,6 +104,8 @@ export default {
             this.$wxApi.showToast('提交失败，请重试');
           }
         });
+      } else {
+        this.$wxApi.showToast('请输入内容');
       }
     }
   },

@@ -38,6 +38,7 @@
         </div>
       </div>
       <div class="save-btn" @click="save()">保存</div>
+      <button class="share-btn" type="primary" open-type="share">分享给朋友</button>
     </div>
     <Category :toggle="showCategory" :categoryData="getCurrentList"
      :activeItem="currentCategory"
@@ -174,6 +175,12 @@ export default {
         this.initCurrentCategory();
       }
     });
+  },
+  onShareAppMessage() {
+    return {
+      title: '送你一个宝账',
+      imageUrl: '../../static/images/logo.jpg'
+    }
   }
 }
 </script>
