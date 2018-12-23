@@ -6,6 +6,7 @@
         <div class="bottom">
           <span class="time">{{item.time}}</span>
           <span class="icon" v-if="item.global==1">系统</span>
+          <span class="icon" v-if="item.global==0">回复</span>
         </div>
       </div>
     </div>
@@ -26,15 +27,12 @@ export default {
       arr.forEach(item => {
         item.time = util.formatTimeString(item.time);
       });
-      console.log(arr)
+      console.log(arr);
       return arr;
     },
-  },
-  onLoad() {
-    console.log('reply onLoad');
-    this.$wxApi.showLoading('加载中...');
-    this.$api.getReplyList(this.uid).then(res => {
-      console.log(res);
+    async init() {
+      this.$wxApi.showLoading('加载中...');
+      let res = await this.$api.getReplyList(this.uid);
       this.$wxApi.hideLoading();
       if (res.code == 1) {
         let data = res.d;
@@ -42,7 +40,10 @@ export default {
       } else {
         console.log(res.msg);
       }
-    });
+    }
+  },
+  onLoad() {
+    this.init();
   }
 }
 </script>

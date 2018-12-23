@@ -15,10 +15,11 @@ export default  {
 			uid: uid
 		});
 	},
-	getAccountList: (time, budgetId) => {
-		return REQ.request('post', host + '/getAccountList', {
+	getAccountList: (time, budgetId, uid) => {
+		return REQ.request('get', host + '/getAccountList', {
 			time: time,
-			budgetId: budgetId
+			budgetId: budgetId,
+			uid: uid
 		});
 	},
 	updateUserInfo: (uid, userInfo) => {
@@ -53,4 +54,14 @@ export default  {
 			accountId: accountId
 		});
 	},
+	updateAccount: (rmb, cid, saveTime, remark, budgetId, accountId) => {
+		return REQ.request('post', host + '/updateAccount', {
+			rmb:rmb,
+			cid: cid,
+			saveTime: saveTime,
+			remark: remark,
+			budgetId: budgetId,
+			accountId: accountId
+		});
+	}
 }

@@ -146,23 +146,16 @@ export default {
       return Chart;
     },
     // 获取数据
-    getDataList() {
+    async getDataList() {
       this.$wxApi.showLoading('加载中...');
-      this.$api.getAccountList(this.currentMonth, this.budgetId)
-      .then(res => {
-        // console.log(res)
-        if (res.code == 1) {
-          let data = res.d;
-          this.pieData = this.getPieData(data);
-          Chart.setOption(this.getPieOption(this.pieData));
-          console.log('chart-----------------')
-          this.$wxApi.hideLoading();
-        } else {
-          this.$wxApi.hideLoading();
-        }
-      }).catch(err => {
-        this.$wxApi.hideLoading();
-      });
+      let res = await this.$api.getAccountList(this.currentMonth, this.budgetId, this.$wxApi.getItem('uid'));
+      this.$wxApi.hideLoading();
+      if (res.code == 1) {
+        let data = res.d;
+        this.pieData = this.getPieData(data);
+        Chart.setOption(this.getPieOption(this.pieData));
+        console.log('chart-----------------')
+      }
     },
     // 将数据转换为扇形图所需要的数据[{name: '饮食', value: 100}]
     getPieData(arr) {
@@ -187,7 +180,6 @@ export default {
       return newArr;
     }
   },
-
   created() {
   },
   onShow() {

@@ -92,20 +92,45 @@ export default {
       this.openMessage = false;
       this.message = '';
     },
-    sendMessage() {
+    async sendMessage() {
       if (this.message != '') {
         this.$wxApi.showLoading('提交中...');
-        this.$api.message(this.uid, this.message,).then(res => {
-          this.$wxApi.hideLoading();
-          if (res.code == 1) {
-            this.closeMessage();
-            this.$wxApi.showToast('提交成功');
-          } else {
-            this.$wxApi.showToast('提交失败，请重试');
-          }
-        });
+        let res = await this.$api.message(this.uid, this.message);
+        this.$wxApi.hideLoading();
+        if (res.code == 1) {
+          this.closeMessage();
+          this.$wxApi.showToast('提交成功');
+        } else {
+          this.$wxApi.showToast('提交失败，请重试');
+        }
       } else {
         this.$wxApi.showToast('请输入内容');
+      }
+    },
+    async initPage() {
+      this.uid = this.$wxApi.getItem('uid');
+      let scopeUserInfo = await this.$wxApi.getSetting('scope.userInfo');
+      this.isAuthUserInfo = scopeUserInfo;
+      if (scopeUserInfo) {
+        console.log('已授权')
+        if (this.$wxApi.getItem('userInfo') == null) {
+          this.$wxApi.showLoading('信息加载中...');
+          let res = await this.$api.getUserInfo(this.uid);
+          this.$wxApi.hideLoading();
+          if (res.code == 1) {
+            let userInfo = res.d;
+            this.avatarUrl = userInfo.avatarUrl;
+            this.nickName = userInfo.nickName;
+            this.$wxApi.setItem('userInfo', userInfo);
+          } else {
+            console.log(res.msg);
+          }
+        } else {
+          console.log(this.$wxApi.getItem('userInfo'));
+          let userInfo = this.$wxApi.getItem('userInfo');
+          this.avatarUrl = userInfo.avatarUrl;
+          this.nickName = userInfo.nickName;
+        }
       }
     }
   },
@@ -118,33 +143,34 @@ export default {
 
   onLoad () {
     console.log('my onLoad');
-    this.uid = this.$wxApi.getItem('uid');
-    this.$wxApi.getSetting('scope.userInfo').then(res => {
-      console.log('是否授权用户信息:', res)
-      this.isAuthUserInfo = res;
-      if (res) {
-        console.log('已授权')
-        if (this.$wxApi.getItem('userInfo') == null) {
-          this.$wxApi.showLoading('信息加载中...');
-          this.$api.getUserInfo(this.uid).then(res => {
-            if (res.code == 1) {
-              let userInfo = res.d;
-              this.avatarUrl = userInfo.avatarUrl;
-              this.nickName = userInfo.nickName;
-              this.$wxApi.setItem('userInfo', userInfo);
-            } else {
-              console.log(res.msg);
-            }
-            this.$wxApi.hideLoading();
-          });
-        } else {
-          console.log(this.$wxApi.getItem('userInfo'));
-          let userInfo = this.$wxApi.getItem('userInfo');
-          this.avatarUrl = userInfo.avatarUrl;
-          this.nickName = userInfo.nickName;
-        }
-      }
-    });
+    this.initPage();
+    // this.uid = this.$wxApi.getItem('uid');
+    // this.$wxApi.getSetting('scope.userInfo').then(res => {
+    //   console.log('是否授权用户信息:', res)
+    //   this.isAuthUserInfo = res;
+    //   if (res) {
+    //     console.log('已授权')
+    //     if (this.$wxApi.getItem('userInfo') == null) {
+    //       this.$wxApi.showLoading('信息加载中...');
+    //       this.$api.getUserInfo(this.uid).then(res => {
+    //         if (res.code == 1) {
+    //           let userInfo = res.d;
+    //           this.avatarUrl = userInfo.avatarUrl;
+    //           this.nickName = userInfo.nickName;
+    //           this.$wxApi.setItem('userInfo', userInfo);
+    //         } else {
+    //           console.log(res.msg);
+    //         }
+    //         this.$wxApi.hideLoading();
+    //       });
+    //     } else {
+    //       console.log(this.$wxApi.getItem('userInfo'));
+    //       let userInfo = this.$wxApi.getItem('userInfo');
+    //       this.avatarUrl = userInfo.avatarUrl;
+    //       this.nickName = userInfo.nickName;
+    //     }
+    //   }
+    // });
   }
 }
 </script>

@@ -1,4 +1,4 @@
-.index-page{
+.account-page{
   width: 100%;
   height: 100%;
   display: flex;
@@ -13,7 +13,20 @@
     left: 0;
     right: 0;
     display: flex;
-    flex-direction: column;
+    height: 50px;
+    .btn{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      &.update-btn{
+        background-color: #67c23a;
+      }
+      &.delete-btn{
+        background-color: #f56c6c;
+      }
+    }
     .save-btn{
       width: 160px;
       height: 40px;

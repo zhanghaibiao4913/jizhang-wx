@@ -2,13 +2,12 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background-color: #333131;
+	// background-color: $main-bg-color;
+	background-color: #ffffff;
 	padding-top: 10px;
 	box-sizing: border-box;
 	.user-info-wrapper{
 		display: flex;
-		// align-items: center;
-		// justify-content: center;
 		box-sizing: border-box;
 		padding: 0 10px;
 		.avatar{
@@ -22,7 +21,7 @@
 			}
 		}
 		.user-info {
-			color: #ffffff;
+			color: #606266;
 			flex: 1;
 			display: flex;
 			flex-direction: column;
@@ -96,7 +95,7 @@
 			.content{
 				width: 300px;
 				height: 220px;
-				background-color: #0fa13b;
+				background-color: #ffffff;
 				display: flex;
 				flex-direction: column;
 				padding: 10px;
@@ -108,16 +107,16 @@
 					flex-direction: column;
 					align-items: center;
 					span{
-						color: #ffffff;
+						color: #303133;
 					}
 					textarea{
 						flex: 1;
 						width: 80%;
-						border: solid #03699c 1px;
+						border: solid #409eff 1px;
 						border-radius: 4px;
 						padding-left: 10px;
 						box-sizing: border-box;
-						color: #ffffff;
+						color: #606266;
 						margin-top: 15px;
 					}
 				}
@@ -133,12 +132,14 @@
 						align-items: center;
 						justify-content: center;
 						border-radius: 4px;
-						color: #ffffff;
 						&.confirm{
 							background-color: #1296db;
+							color: #ffffff;
 						}
 						&.cancel{
-							background-color: rgb(53, 56, 53);
+							background-color: #ffffff;
+							border: 1px solid #dcdfe6;
+							color: #606266;
 						}
 					}
 				}

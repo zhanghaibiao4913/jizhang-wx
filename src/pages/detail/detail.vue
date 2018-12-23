@@ -23,7 +23,7 @@
           <div>{{budgetId == 1? '-':'+'}}{{item.dayTotalRmb}}</div>
         </div>
         <div class="item-list">
-          <div class="item" v-for="(account, j) in item.list" :key="j" @longpress="longpressEvent(account)">
+          <div class="item" v-for="(account, j) in item.list" :key="j" @click="jumpPage(account)">
             <span class="category">{{account.cname}}</span>
             <span class="remark">{{account.remark}}</span>
             <span class="rmb">{{budgetId == 1? '-':'+'}}{{account.rmb}}</span>
@@ -58,25 +58,18 @@ export default {
   },
 
   methods: {
-    loadData() {
+    async loadData() {
       this.$wxApi.showLoading('加载中...');
-      this.$api.getAccountList(this.currentMonth, this.budgetId)
-      .then(res => {
-        // console.log(res)
-        if (res.code == 1) {
-          let data = res.d;
-          let transData = this.transDate(data);
-          // console.log(transData);
-          let mapData = this.mapData(transData);
-          // console.log(mapData);
-          this.dayList = mapData;
-          this.$wxApi.hideLoading();
-        } else {
-          this.$wxApi.hideLoading();
-        }
-      }).catch(err => {
-        this.$wxApi.hideLoading();
-      });
+      let res = await this.$api.getAccountList(this.currentMonth, this.budgetId, this.$wxApi.getItem('uid'));
+      this.$wxApi.hideLoading();
+      if (res.code == 1) {
+        let data = res.d;
+        let transData = this.transDate(data);
+        // console.log(transData);
+        let mapData = this.mapData(transData);
+        // console.log(mapData);
+        this.dayList = mapData;
+      }
     },
     handleBudgetType(type) {
       this.budgetId = type;
@@ -129,24 +122,13 @@ export default {
       });
       return val;
     },
-    longpressEvent(item) {
-      console.log(item);
-      this.$wxApi.showActionSheet(['删除']).then(res => {
-        console.log(res);
-        if (res.name == '删除') {
-          this.$api.deleteAccount(item.accountId).then(res => {
-            if (res.code == 1) {
-              this.$wxApi.showToast('删除成功');
-              this.loadData();
-            } else {
-              this.$wxApi.showToast('删除失败，请重试');
-            }
-          });
-        }
-      }).catch(err=>{
-        console.log('取消');
+    jumpPage(item) {
+      let url = '../account/main';
+      wx.navigateTo({
+        url: `${url}?item=${JSON.stringify(item)}`
       });
     }
+
   },
   computed: {
     monthTotalRmb() {

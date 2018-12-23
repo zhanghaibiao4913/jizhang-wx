@@ -41,14 +41,17 @@
 			.btn{
 				width: 45%;
 				height: 30px;
-				line-height: 30px;
-				text-align: center;
-				border: 1px solid #201e20;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid #606266;
+				color: #606266;
 				border-radius: 4px;
+				box-sizing: border-box;
 				&.active{
 					background-color: #0a6da1;
 					color: #fff;
-					border: none;
+					border: 1px solid #0a6da1;
 				}
 			}
 		}
@@ -56,7 +59,8 @@
 	.list-wrapper{
 		flex: 1;
 		overflow-y: scroll;
-		background-color: #333131;
+		// background-color: $main-bg-color;
+		background-color: #ffffff;
 		.item-day{
 			.day-bar{
 				height: 30px;
@@ -73,11 +77,11 @@
 				width: 100%;
 				box-sizing: border-box;
 				.item{
-					height: 40px;
+					height: 46px;
 					display: flex;
 					align-items: center;
 					padding: 0 10px;
-					border-bottom: solid 1px #201e20;
+					border-bottom: solid 1px #dcdfe6;
 					box-sizing: border-box;
 					font-size: 16px;
 					&:last-child{
