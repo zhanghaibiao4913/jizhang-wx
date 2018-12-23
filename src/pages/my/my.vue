@@ -13,9 +13,6 @@
         <span class="icon"></span>
       </div>
     </div>
-    <div class="login-btn" v-if="!isAuthUserInfo">
-      <button type="primary" size="default" open-type="getUserInfo" lang="zh_CN" @getuserinfo="bindGetUserInfo">登录</button>
-    </div>
     <div class="message-wrapper" v-if="openMessage">
       <div class="mask">
         <div class="content">
@@ -38,13 +35,16 @@
         </div>
       </div>
     </div>
+    <Login title="请先登录" :closeable="false" @userInfo="getUserInfo"></Login>
   </div>
 </template>
 
 <script>
 import util from '../../utils/util.js';
+import Login from "../../components/login/login";
 
 export default {
+  components: { Login },
   data () {
     return {
       avatarUrl: '../../../static/images/default_avatar.png',
@@ -55,7 +55,6 @@ export default {
         {id: 2, name: '系统消息'},
         {id: 3, name: '关于作者'}
       ],
-      isAuthUserInfo: true, // 默认已授权用户信息
       openMessage: false, // 留言弹窗
       message: '',
       openAbout: false,
@@ -63,20 +62,6 @@ export default {
   },
 
   methods: {
-    // 用户允许授权信息
-    bindGetUserInfo(e) {
-      console.log(e.mp.detail);
-      let userInfo = e.mp.detail.userInfo || null;
-      if (userInfo != null) {
-        this.avatarUrl = userInfo.avatarUrl;
-        this.nickName = userInfo.nickName;
-        this.$wxApi.setItem('userInfo', userInfo);
-        this.isAuthUserInfo = true;
-        this.$api.updateUserInfo(this.uid, userInfo).then(res => {
-          console.log(res);
-        });
-      }
-    },
     domClick(data) {
       console.log(data.name);
       if (data.id == 1) {
@@ -107,70 +92,20 @@ export default {
         this.$wxApi.showToast('请输入内容');
       }
     },
-    async initPage() {
-      this.uid = this.$wxApi.getItem('uid');
-      let scopeUserInfo = await this.$wxApi.getSetting('scope.userInfo');
-      this.isAuthUserInfo = scopeUserInfo;
-      if (scopeUserInfo) {
-        console.log('已授权')
-        if (this.$wxApi.getItem('userInfo') == null) {
-          this.$wxApi.showLoading('信息加载中...');
-          let res = await this.$api.getUserInfo(this.uid);
-          this.$wxApi.hideLoading();
-          if (res.code == 1) {
-            let userInfo = res.d;
-            this.avatarUrl = userInfo.avatarUrl;
-            this.nickName = userInfo.nickName;
-            this.$wxApi.setItem('userInfo', userInfo);
-          } else {
-            console.log(res.msg);
-          }
-        } else {
-          console.log(this.$wxApi.getItem('userInfo'));
-          let userInfo = this.$wxApi.getItem('userInfo');
-          this.avatarUrl = userInfo.avatarUrl;
-          this.nickName = userInfo.nickName;
-        }
-      }
+    getUserInfo(data) {
+      console.log('my userInfo', data);
+      this.avatarUrl = data.avatarUrl;
+      this.nickName = data.nickName;
     }
   },
-
   computed: {
     getID() {
       return util.getRandomLetter(9) + this.uid;
     }
   },
-
   onLoad () {
     console.log('my onLoad');
-    this.initPage();
-    // this.uid = this.$wxApi.getItem('uid');
-    // this.$wxApi.getSetting('scope.userInfo').then(res => {
-    //   console.log('是否授权用户信息:', res)
-    //   this.isAuthUserInfo = res;
-    //   if (res) {
-    //     console.log('已授权')
-    //     if (this.$wxApi.getItem('userInfo') == null) {
-    //       this.$wxApi.showLoading('信息加载中...');
-    //       this.$api.getUserInfo(this.uid).then(res => {
-    //         if (res.code == 1) {
-    //           let userInfo = res.d;
-    //           this.avatarUrl = userInfo.avatarUrl;
-    //           this.nickName = userInfo.nickName;
-    //           this.$wxApi.setItem('userInfo', userInfo);
-    //         } else {
-    //           console.log(res.msg);
-    //         }
-    //         this.$wxApi.hideLoading();
-    //       });
-    //     } else {
-    //       console.log(this.$wxApi.getItem('userInfo'));
-    //       let userInfo = this.$wxApi.getItem('userInfo');
-    //       this.avatarUrl = userInfo.avatarUrl;
-    //       this.nickName = userInfo.nickName;
-    //     }
-    //   }
-    // });
+    this.uid = this.$wxApi.getItem('uid');
   }
 }
 </script>
