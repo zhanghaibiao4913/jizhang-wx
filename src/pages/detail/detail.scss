@@ -6,7 +6,7 @@
 		display: flex;
 		flex: 0 0 70px;
 		width: 100%;
-		background-color: #b7c2c2;
+		background-color: #1296db;
 		align-items: center;
 		justify-content: space-between;
 		padding: 0 10px;
@@ -14,8 +14,8 @@
 		.date-picker-wrapper{
 			width: 140px;
 			height: 50px;
-			border-radius: 5px;
-			background-color: #0a6da1;
+			border-radius: 4px;
+			background-color: #282c34;
 			color: #fff;
 			picker{
 				width: 100%;
@@ -29,7 +29,7 @@
 				width: 18px;
 				height: 18px;
 				position: relative;
-				top: 2px;
+				top: 4px;
 				right: -2px;
 				background: url("../../../static/images/triangle.png") no-repeat center center / 100%;
 			}
@@ -40,18 +40,17 @@
 			justify-content: space-between;
 			.btn{
 				width: 45%;
-				height: 30px;
+				height: 36px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				border: 1px solid #606266;
-				color: #606266;
+				color: #ebeef5;
 				border-radius: 4px;
 				box-sizing: border-box;
+				border: 1px solid #282c34;
 				&.active{
-					background-color: #0a6da1;
+					background-color: #282c34;
 					color: #fff;
-					border: 1px solid #0a6da1;
 				}
 			}
 		}
@@ -59,7 +58,6 @@
 	.list-wrapper{
 		flex: 1;
 		overflow-y: scroll;
-		// background-color: $main-bg-color;
 		background-color: #ffffff;
 		.item-day{
 			.day-bar{
@@ -68,10 +66,11 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				background-color: #0a6da1;
+				// background-color: #0a6da1;
 				padding: 0 10px;
 				box-sizing: border-box;
 				font-size: 12px;
+				border-bottom: 1px solid #dcdfe6;
 			}
 			.item-list{
 				width: 100%;
@@ -80,8 +79,10 @@
 					height: 46px;
 					display: flex;
 					align-items: center;
-					padding: 0 10px;
+					padding-right: 10px;
+					margin-left: 14px;
 					border-bottom: solid 1px #dcdfe6;
+					// background-color: #909399;
 					box-sizing: border-box;
 					font-size: 16px;
 					&:last-child{
@@ -93,13 +94,15 @@
 						height: 30px;
 						align-items: center;
 						justify-content: center;
-						background-color: #14a33f;
+						background-color: rgba(64,158,255,.1);
+						border: 1px solid rgba(64,158,255,.2);
+						color: #409eff;
 						border-radius: 4px;
-						color: #fff;
 					}
 					.remark{
 						flex: 1;
 						padding-left: 5px;
+						color: #606266;
 					}
 					.rmb{
 						flex: 0 0 60px;

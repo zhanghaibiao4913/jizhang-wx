@@ -32,7 +32,7 @@ export default {
     },
     async init() {
       this.$wxApi.showLoading('加载中...');
-      let res = await this.$api.getReplyList(this.uid);
+      let res = await this.$api.getReplyList(this.$wxApi.getItem('uid'));
       this.$wxApi.hideLoading();
       if (res.code == 1) {
         let data = res.d;

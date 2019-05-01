@@ -42,7 +42,7 @@ export default {
     let times = [hour, minute, second].map(formatNumber).join(':');
     return times;
   },
-   // type:1去年月，type取月日
+  // type:1取年月，type：0取月日
   getDateFromSaveTime: (saveTime, type) => {
     let days = saveTime.split('T')[0];
     let result = '';

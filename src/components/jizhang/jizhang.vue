@@ -10,7 +10,7 @@
       <div class="item-wrapper">
         <div class="icon money"></div>
         <div class="title">金额：</div>
-        <div class="input-wrapper"><input type="number" placeholder="输入金额" v-model="rmb"></div>
+        <div class="input-wrapper"><input type="digit" placeholder="输入金额" v-model="rmb"></div>
       </div>
       <div class="item-wrapper" @click="openCategorySelect">
         <div class="icon category"></div>
@@ -33,7 +33,7 @@
       <div class="item-wrapper remarks">
         <div class="icon remarks"></div>
         <div class="title">备注：</div>
-        <div class="remarks-text">
+        <div class="input-wrapper">
           <input type="text" maxlength="10" placeholder="10个字以内" v-model="remark">
         </div>
       </div>
@@ -67,7 +67,7 @@ export default {
       budgetId: this.account.budgetId || 1, // 默认支出
 			cname: '',
 			cid: -1,
-      currentDate: this.account.date || util.getDays(), // 当天日期
+      currentDate: this.account.saveTime || util.getDays(), // 当天日期
       remark: this.account.remark || '', // 备注
 			rmb: this.account.rmb || '', // 金额
       showCategory: false, // 默认不显示分类选择页面
@@ -80,6 +80,11 @@ export default {
 	watch: {
 		cid(newVal, oldVal) {
 			this.selectCid = this.cid;
+		},
+		account(val) {
+			console.log('watch:', val.remark);
+			// this.account = val;
+			this.updatePage(val);
 		}
 	},
   methods: {
@@ -149,14 +154,22 @@ export default {
 		clear() {
 			this.rmb = '';
 			this.remark = '';
+		},
+		updatePage(val) {
+			this.budgetId = val.budgetId;
+			this.cname = val.cname;
+			this.cid = val.cid;
+      this.currentDate = val.saveTime;
+      this.remark = val.remark;
+			this.rmb = val.rmb;
 		}
   },
-  created() {
-    console.log('jizhang created');
-    this.initCategoryList();
-  },
   onLoad() {
-  }
+		console.log('jizhang:',this.account);
+		this.initCategoryList();
+	},
+	onShow() {
+	}
 }
 </script>
 

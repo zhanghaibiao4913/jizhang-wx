@@ -59,13 +59,16 @@ export default {
       }
     }
   },
-  created() {
-  },
-  onLoad(options) {
-    console.log('account onLoad');
-    let data = JSON.parse(options.item);
+  // onLoad(options) {
+  //   let data = JSON.parse(options.item);
+  //   console.log('onload-----',data.remark);
+  //   this.accountData = data;
+  // },
+  onLoad() {
+    let data = JSON.parse(this.$root.$mp.query.item);
+    console.log('account:', data);
     this.accountData = data;
-    console.log(data);
+    
   }
 }
 </script>

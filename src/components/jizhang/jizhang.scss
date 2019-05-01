@@ -42,7 +42,7 @@
       height: 60px;
       display: flex;
       align-items: center;
-      border-bottom: solid 1px rgb(170, 164, 164);
+      border-bottom: solid 1px #dcdfe6;
       padding: 0 10px;
       box-sizing: border-box;
       .icon{
@@ -68,6 +68,7 @@
           background: url("../../../static/images/enter.png") no-repeat center center / 100%;
         }
       }
+      .input-wrapper,
       .current-category{
         flex: 1;
       }

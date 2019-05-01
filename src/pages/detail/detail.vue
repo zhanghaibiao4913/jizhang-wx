@@ -34,7 +34,7 @@
     </div>
     <div class="footer-bar">
       <span>{{budgetId == 1? '支出':'收入'}}总额：</span>
-      <span :class="budgetId == 1?'red':'green'">{{monthTotalRmb}}</span>
+      <span :class="budgetId == 1?'red':'green'">{{monthTotalRmb}}元</span>
     </div>
   </div>
 </template>
@@ -67,7 +67,7 @@ export default {
         let transData = this.transDate(data);
         // console.log(transData);
         let mapData = this.mapData(transData);
-        // console.log(mapData);
+        console.log(mapData);
         this.dayList = mapData;
       }
     },
@@ -87,7 +87,7 @@ export default {
     // 将时间转为月-日
     transDate(data) {
       for(let i = 0; i < data.length; i++) {
-        data[i].saveTime = util.getDateFromSaveTime(data[i].saveTime, 2);
+        data[i].saveTime = data[i].saveTime.split('T')[0];
       }
       return data;
     },
@@ -123,6 +123,7 @@ export default {
       return val;
     },
     jumpPage(item) {
+      console.log('detail', item);
       let url = '../account/main';
       wx.navigateTo({
         url: `${url}?item=${JSON.stringify(item)}`
