@@ -13,16 +13,9 @@
 2. 服务端：nodeJS + koa2 + mysql， 项目代码可见我的另一个项目'jizhang-server'
 
 ## 界面截图(UI有点丑，全靠心情随意搭配)
-<<<<<<< HEAD
 ![avatar](/jietu/1.jpg)
 ![avatar](/jietu/2.jpg)
 ![avatar](/jietu/3.jpg)
 ![avatar](/jietu/4.jpg)
-=======
-![avatar](/jietu/1.jpg=200x400)
-![avatar](/jietu/2.jpg=200x400)
-![avatar](/jietu/3.jpg=200x400)
-![avatar](/jietu/4.jpg=200x400)
->>>>>>> 602d5515c6f03e2f0af008a45196f4bf2c2ffebf
 
 
