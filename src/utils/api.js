@@ -1,4 +1,4 @@
-const CONFIG = require('./config.js');
+const CONFIG = require('./config.dist.js');
 import REQ from './request.js';
 
 const host = CONFIG.host;
