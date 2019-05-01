@@ -9,7 +9,7 @@
 
 ## 技术应用
 1. 微信端：
-之前自学的微信的时候都是用原生开发，现在有一些微信小程序开发框架如mpvue，wepy等，于是就趁着这个机会接触接触，最后选了mpvue来开发，已经有3个月没接触vue.js了，顺便温习一下vue.js
+之前自学的微信的时候都是用原生开发，现在有一些微信小程序开发框架如mpvue，wepy等，于是就趁着这个机会接触接触，最后选了mpvue来开发，最近一直在开发小游戏，已经有3个月没接触vue.js了，顺便温习一下vue.js
 2. 服务端：nodeJS + koa2 + mysql， 项目代码可见我的另一个项目'jizhang-server'
 
 ## 界面截图(UI有点丑，全靠心情随意搭配)
@@ -18,13 +18,4 @@
 ![avatar](/jietu/3.png)
 ![avatar](/jietu/4.png)
 
-## Build Setup
-
-```
-# 下载依赖
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-```
 
